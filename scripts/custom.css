@@ -1,0 +1,103 @@
+.has-bg-custom-grey{
+  background-color: #6D767E !important;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden !important;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.columns:last-child{
+  margin-bottom: 0rem !important;
+}
+
+.is-fullwidth{
+  overflow-x: hidden;
+}
+
+.fullheight{
+  height: 100vh !important;
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
+.maxheight{
+  max-height: 95% !important;
+  overflow-y: auto;
+}
+
+.add-border{
+  border: 2px solid DimGrey !important;
+  border-radius: 2px !important;
+}
+
+.light-padding{
+  padding: 0.5rem !important;
+}
+
+.menu{
+  width: 100%;
+  max-height: 100vh;
+}
+
+.menu-content{
+  overflow: auto;
+  max-height: calc(100vh - 3.25rem - 5px);
+  overflow-x: hidden;
+}
+
+.iframe-container {
+  overflow: auto;
+  /* // Calculated from the aspect ration of the content (in case of 16:9 it is 9/16= 0.5625) */
+  padding-top: 56.25%;
+  position: relative;
+}
+
+.iframe-container iframe {
+   border: 0;
+   min-height: 100vh;
+   height: 100vh;
+   left: 0;
+   position: absolute;
+   top: 0;
+   width: 100%;
+}
+
+.box {
+  padding: 0.05rem !important;
+  margin: 0rem !important;
+  /* box-shadow: 0 0.5em 1em -0.125em rgba(255, 120, 78, 0.1), 0 0px 0 1px rgba(255, 120, 78, 0.22) !important; */
+}
+
+.overlay-menu{
+  position: fixed;
+  bottom: 5px;
+  left: 5px;
+  z-index: 1;
+}
+
+.infobutton{
+  /* position: absolute !important;
+  top: 5px;
+  right: 5px; */
+  z-index: 1;
+}
+
+.videobutton{
+  /* position: absolute !important;
+  top: 5px;
+  left: 5px; */
+  z-index: 1;
+}
+
+.is-transparent{
+  opacity: 0.5;
+}
+
+.is-transparent:hover{
+  opacity: 1;
+}
