@@ -1,3 +1,4 @@
+// Login functie voor AWS authorisatie
 function signIn(user_email, user_password){
 
   var poolData = {
@@ -47,7 +48,7 @@ function signIn(user_email, user_password){
 
           sessionStorage.user_data_vcmap = JSON.stringify(dict);
 
-          // location.href = 'index.html';
+          loginModal.isActive = false;
         }
       });
     },
@@ -73,6 +74,7 @@ function signIn(user_email, user_password){
 
 Vue.component('login-modal')
 
+// Login modal die omhoog komt als je niet ingelogd bent
 var loginTemplate = `
                     <div class="modal" v-bind:class=" {'is-active': isActive }">
                       <div class="modal-background"></div>
@@ -97,19 +99,39 @@ var loginTemplate = `
                         </footer>
                       </form>
                     </div>
-                    `
-var loginModal = new Vue({
-  el: '#Main',
-  data: {
-    isActive: true,
-    email: '',
-    password: ''
-  },
-  template: loginTemplate,
-  methods: {
-    onSubmit: function(){
-      console.log("submitted");
-      signIn(loginModal.email, loginModal.password);
+                    `;
+
+// Maak de Vue loginModal aan
+loginModal = new Vue({
+    el: '#Login',
+    data: {
+      isActive: false,
+      email: '',
+      password: ''
+    },
+    template: loginTemplate,
+    methods: {
+      onSubmit: function(){
+        console.log("submitted");
+        signIn(loginModal.email, loginModal.password);
+      }
     }
+  });
+
+// Controleert of gebruiker is ingelogd
+if(sessionStorage) {
+  user_data_vcmap = JSON.parse(sessionStorage.getItem("user_data_vcmap"));
+  if (!(user_data_vcmap == null)) {
+    console.log("You were already logged in");
+    if (!(user_data_vcmap['name'] == null)) {
+      // showAll();
+      // showUserInfo(user_data_vcmap);
+    } else {
+      if (true) { console.log(3); }
+    }
+  } else {
+    loginModal.isActive = true;
   }
-});
+} else{
+  if (true) { console.log("Sorry, your browser does not support session storage."); }
+}
