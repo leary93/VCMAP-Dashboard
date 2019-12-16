@@ -46,6 +46,13 @@
 <div id="NavBar">
   <nav-bar></nav-bar>
 </div>
+<div id="Main" class="columns is-gapless fullheigh">
+  <side-bar id="SideLeft" class="column is-one-fifth add-border fullheight">
+    <!-- <side-bar></side-bar> -->
+  </side-bar>
+  <div id="Center" class="column is-fullwidth add-border fullheight"></div>
+  <div id="SideRight" class="column is-one-fifth add-border fullheight"></div>
+</div>
 </body>
 
 <!-- AWS Cognito -->
@@ -55,6 +62,38 @@
 <!-- Vue script -->
 <script src="modules/global/vue.js"></script>
 
+<script>
+var projects = [
+  {"name": "algemeen",
+  "checks": ["Telefoon van vliegtuigstand (begin ochtend)",
+             "Doorschakeling uit/telefoon op  kantoor overnemen",
+             "Is telefoon/headset opgeladen/aangesloten op stroom",
+             "Telefoon op vliegtuigstand (einde avond)"],
+  "file": "documents/VCMAPalgemeen.pdf"
+  },
+  {"name": "bms",
+  "href": "bms.pnh-verkeerscentrale.nl/",
+  "checks": ["Werkt de inlogfunctie?",
+             "Zijn alle interfaces beschikbaar?",
+             "Worden de bussen in de gebeurtenissenlijst weergegeven?",
+             "Worden de adviezen getoond op minimaal twee objecten/kloppen deze?",
+             "Zijn op minimaal twee objecten passages geregistreerd en worden deze weergegeven?",
+             "Worden de NTS berichten weergegeven?",
+             "Worden geplande bedienmomenten weergegeven in het tabblad planning?",
+             "Is de grote kaart beschikbaar en werken de kaartlagen?",
+             "Kan er op de grote kaart op een object geklikt worden en verschijnt de pop-up?",
+             "Wordt er een kleine kaart weergegeven?",
+             "Wordt het weer correct weergegeven?",
+             "Zijn er logboeken ingevuld bij minimaal twee objecten?"],
+   "image" : "images/BMS.png",
+    "file": "documents/BMS.pdf"},
+  {"name": "sIM amsterdam", "href": "sim.maptm.nl", "checks": [], "image": "images/SIM.png"},
+  {"name": "STS Antwerpen", "href": "ontfant.maptm.nl/monitoring.html", "checks": [], "image": "images/STS.png"}
+]
+</script>
+
 <!-- Custom scripts -->
 <script src="scripts/login.js"></script>
 <script src="scripts/navbar.js"></script>
+<script src="scripts/sidebar.js"></script>
+<script src="scripts/checklist.js"></script>
