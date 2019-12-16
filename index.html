@@ -39,18 +39,18 @@
   <link rel="stylesheet" href="modules/bulma/css/bulma.min.css">
 
 </head>
-<body >
+<body>
 <div id="Login">
   <login-modal></login-modal>
 </div>
 <div id="NavBar">
   <nav-bar></nav-bar>
 </div>
-<div id="Main" class="columns is-gapless fullheigh">
+<div id="Main" class="columns is-gapless fullheight maxheight">
   <side-bar id="SideLeft" class="column is-one-fifth add-border fullheight">
     <!-- <side-bar></side-bar> -->
   </side-bar>
-  <div id="Center" class="column is-fullwidth add-border fullheight"></div>
+  <div id="Center" class="column iframe-containter is-fullwidth add-border fullheight scrollbar-warning"></div>
   <div id="SideRight" class="column is-one-fifth add-border fullheight"></div>
 </div>
 </body>
@@ -72,7 +72,7 @@ var projects = [
   "file": "documents/VCMAPalgemeen.pdf"
   },
   {"name": "bms",
-  "href": "bms.pnh-verkeerscentrale.nl/",
+  "href": "https://bms.pnh-verkeerscentrale.nl/",
   "checks": ["Werkt de inlogfunctie?",
              "Zijn alle interfaces beschikbaar?",
              "Worden de bussen in de gebeurtenissenlijst weergegeven?",
@@ -87,8 +87,8 @@ var projects = [
              "Zijn er logboeken ingevuld bij minimaal twee objecten?"],
    "image" : "images/BMS.png",
     "file": "documents/BMS.pdf"},
-  {"name": "sIM amsterdam", "href": "sim.maptm.nl", "checks": [], "image": "images/SIM.png"},
-  {"name": "STS Antwerpen", "href": "ontfant.maptm.nl/monitoring.html", "checks": [], "image": "images/STS.png"}
+  {"name": "sIM amsterdam", "href": "https://sim.maptm.nl", "checks": [], "image": "images/SIM.png"},
+  {"name": "STS Antwerpen", "href": "https://ontfant.maptm.nl/monitoring.html", "checks": [], "image": "images/STS.png"}
 ]
 </script>
 

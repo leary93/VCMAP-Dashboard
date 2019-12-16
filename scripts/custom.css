@@ -25,7 +25,7 @@ body::-webkit-scrollbar {
 }
 
 .fullheight{
-  height: 100vh !important;
+  height: 100% !important;
   margin: 0px !important;
   padding: 0px !important;
 }

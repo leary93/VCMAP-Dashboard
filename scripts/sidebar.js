@@ -1,26 +1,54 @@
 Vue.component('dynamic-frame',{
   template: `
-  <div>
-    <a v-bind:href="frame.link">
+  <div v-bind:id="frame.name" v-bind:class="{'fullheight': isActive, 'is-fullwidth': isActive, 'iframe-container': isActive}" @click="openFrame">
+    <a v-bind:class="{'is-hidden': isActive}">
       <div v-bind:class="{'add-border': !isActive, 'box': !isActive}">
-        <figure v-bind:class="{'is-hidden': isActive, 'is-16by9': !isActive, 'image': !isFrame}">
+        <figure name="smallFrame" v-bind:class="{'is-16by9': !isActive, 'image': !isFrame}">
           <img v-bind:src="frame.image" v-bind:alt="frame.name" v-bind:class="{'is-hidden': isFrame}"></img>
-          <iframe v-bind:src="frame.href" class="scrollbar-warning" v-bind:class="{'is-hidden': !isFrame}" v-bind:allowfullscreen="isActive">
+          <iframe class="scrollbar-warning" v-bind:class="{'is-hidden': !isFrame}" allowfullscreen>
           </iframe>
         </figure>
         <button v-bind:class="{'is-hidden': isActive}" class="button has-text-centered has-text-weight-semibold is-fullwidth is-radiusless is-paddingless">
           {{ frame.name }}
         </button>
-
       </div>
     </a>
   </div>
   `,
   props: {
-    frame: Object
+    frame: Object,
+    parent: null
   },
   data: function(){
     return {isActive: false, isFrame: false}
+  },
+  methods: {
+    openFrame: function(){
+      // Element can be accessed with this.$el
+      // With openFrame we move this element to the center div
+      el = this.$el;
+      document.getElementById('Center').append(el);
+      iframe = el.getElementsByTagName('iframe')[0];
+      if(!this.isFrame){
+        console.log("checking parent", this.parent);
+        if (this.parent == "#siteList")
+          iframe.src = this.frame.href;
+        else if (this.parent == "#docList") {
+          iframe.src = this.frame.file;
+        }
+      }
+      this.isActive = true;
+      this.isFrame = true;
+      el.append(iframe);
+    },
+    closeFrame: function(){
+      // return element to the sideBar
+      document.getElementById(this.parent).append(this.$el);
+      iframe = this.$el.getElementsByTagName('iframe')[0];
+
+      this.$el.getElementsByTagName('smallFrame')[0].append(iframe);
+
+    }
   }
 });
 
@@ -36,7 +64,7 @@ var sideBarTemplate = `
           Project sites
         </p>
         <ul class="menu-list">
-          <li is="dynamic-frame" v-for="frame in siteFrames" v-bind:key="frame.name" v-bind:frame="frame"></li>
+          <li is="dynamic-frame" v-for="frame in siteFrames" v-bind:key="frame.name" v-bind:frame="frame" v-bind:parent="'#siteList'"></li>
         </ul>
       </div>
       <div id="docList" class="field">
@@ -44,7 +72,7 @@ var sideBarTemplate = `
           Documentation
         </p>
         <ul class="menu-list">
-          <li is="dynamic-frame" v-for="frame in docFrames" v-bind:key="frame.name" v-bind:frame="frame"></li>
+          <li is="dynamic-frame" v-for="frame in docFrames" v-bind:key="frame.name" v-bind:frame="frame" v-bind:parent="'#docList'"></li>
         </ul>
       </div>
     </div>
