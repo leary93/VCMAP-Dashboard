@@ -47,11 +47,13 @@
   <nav-bar></nav-bar>
 </div>
 <div id="Main" class="columns is-gapless fullheight maxheight">
-  <side-bar id="SideLeft" class="column is-one-fifth add-border fullheight">
+  <side-bar id="SideLeft" class="column is-one-quarter add-border fullheight">
     <!-- <side-bar></side-bar> -->
   </side-bar>
-  <div id="Center" class="column iframe-containter is-fullwidth add-border fullheight scrollbar-warning"></div>
-  <div id="SideRight" class="column is-one-fifth add-border fullheight"></div>
+  <div id="Center" class="column is-fullwidth fullheight">
+    <dynamic-page v-for="page in dynamicPages" :key="page.name" :name="page.name" :project="page.project" :type="page.type"></dynamic-page>
+  </div>
+  <div id="SideRight" class="column is-one-quarter add-border fullheight"></div>
 </div>
 </body>
 
@@ -87,13 +89,27 @@ var projects = [
              "Zijn er logboeken ingevuld bij minimaal twee objecten?"],
    "image" : "images/BMS.png",
     "file": "documents/BMS.pdf"},
-  {"name": "sIM amsterdam", "href": "https://sim.maptm.nl", "checks": [], "image": "images/SIM.png"},
-  {"name": "STS Antwerpen", "href": "https://ontfant.maptm.nl/monitoring.html", "checks": [], "image": "images/STS.png"}
-]
+  {"name": "sIM amsterdam", "href": "https://sim.maptm.nl",
+   "checks": ["Werkt de site?",
+              "Werkt de map als op het icoon wordt geklikt?"],
+   "image": "images/SIM.png"},
+  {"name": "STS Antwerpen", "href": "https://ontfant.maptm.nl/monitoring.html",
+   "checks": ["Werkt de site?",
+              "Staan de protocollen actief als dit nodig is?",
+              "Is de GetGantt uitvoering in orde?",
+              "Werken de maps die onder de grafieken staan?"],
+   "image": "images/STS.png",
+   "file": "documents/STS.pdf"}
+];
+
+var LoadedPages = [];
+
 </script>
 
 <!-- Custom scripts -->
 <script src="scripts/login.js"></script>
 <script src="scripts/navbar.js"></script>
+<script src="scripts/dynamicframe.js"></script>
+<script src="scripts/dynamicpage.js"></script>
 <script src="scripts/sidebar.js"></script>
 <script src="scripts/checklist.js"></script>

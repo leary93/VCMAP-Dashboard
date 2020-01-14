@@ -20,7 +20,7 @@ Vue.component("sub-list", {
 })
 
 var checkListTemplate = `
-  <div id="CheckList" v-bind:class="{'is-collapsed': isCollapsed, 'has-bg-custom-grey': isCollapsed, 'is-one-fifth': !isCollapsed}"
+  <div id="CheckList" v-bind:class="{'is-collapsed': isCollapsed, 'has-bg-custom-grey': isCollapsed, 'is-one-quarter': !isCollapsed}"
    @mouseenter="open" @mouseleave="close" class="column add-border">
     <aside class="menu scrollbar-warning menu-content" v-bind:class="{'is-hidden' : isCollapsed}">
       <sub-list v-for="project in projects" v-bind:project="project" v-bind:key="project.name">
@@ -36,12 +36,10 @@ var checkList = new Vue({
   methods: {
     open: function(){
       // function that opens the sidebar (like on hover-over, or an open button)
-      console.log('would open')
       this.isCollapsed = false;
     },
     close: function(){
       // function that closes the sidebar (like on hover-leave, or a close button)
-      console.log('would close')
       this.isCollapsed =  true;
     }
   }
