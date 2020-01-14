@@ -11,7 +11,7 @@ Vue.component('dynamic-frame', {
             <button class="infobutton button is-transparent"><i class="fas fa-tasks"></i></button>
           </p>
           <p class="control" v-if="frame.href != null">
-            <button class="infobutton button is-transparent"><i class="fas fa-globe-europe"></i></button>
+            <button class="infobutton button is-transparent" @click="openNew"><i class="fas fa-globe-europe"></i></button>
           </p>
           <p class="control is-expanded">
             <button class="is-fullwidth button has-text-centered has-text-weight-semibold is-radiusless is-paddingless"> {{ frame.name }} </button>
@@ -30,5 +30,10 @@ Vue.component('dynamic-frame', {
   props: {
     frame: Object,
     home: false
+  },
+  methods:{
+    openNew: function(){
+      window.open(this.frame.href, '_blank');
+    }
   }
 })
