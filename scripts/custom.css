@@ -85,6 +85,13 @@ body::-webkit-scrollbar {
   z-index: 1;
 }
 
+.overlay-generate{
+  position: fixed !important;
+  bottom: 5px;
+  right: 25px;
+  z-index: 1;
+}
+
 .infobutton{
   /* position: absolute !important;
   top: 5px;

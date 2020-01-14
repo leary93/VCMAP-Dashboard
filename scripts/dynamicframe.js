@@ -33,7 +33,7 @@ Vue.component('dynamic-frame', {
   },
   methods:{
     openNew: function(){
-      window.open(this.frame.href, '_blank');
+      window.open(this.frame.href);
     }
   }
 })

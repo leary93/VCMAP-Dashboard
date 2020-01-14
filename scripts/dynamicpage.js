@@ -14,6 +14,7 @@ Vue.component("dynamic-page", {
     </div>
     <div id="homeList" class="columns is-centered is-multiline light-padding is-fullwidth" v-if="type == 'home'">
       <dynamic-frame v-for="project in projectframes" v-bind:frame="project" v-bind:key="project.name" v-bind:home='true'></dynamic-frame>
+      <button class="button is-link overlay-generate" @click="openAll">Generate sites </button>
     </div>
   </div>
   `,
@@ -32,6 +33,14 @@ Vue.component("dynamic-page", {
     update: function(){
       console.log("updating");
       this.current = currentPage;
+    },
+    openAll: function(){
+      projects.forEach(function(proj){
+        if(proj.href != null){
+          setTimeout(function(){   window.open(proj.href) }, 200);
+          console.log("opening" + proj.href);
+        }
+      })
     }
   }
 });
