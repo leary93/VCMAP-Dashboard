@@ -2,7 +2,7 @@ Vue.component("side-bar", {
   template:
   `
   <div id="SideBar" v-bind:class="{'is-collapsed': isCollapsed, 'has-bg-custom-grey': isCollapsed, 'is-one-quarter': !isCollapsed}"
-    class="column add-border fullheight" @mouseenter="open" @mouseleave="close">
+    class="column add-border fullheight" @click="open" @blur="close" tabindex="1">
     <aside class="menu" style="height: inherit, width: inherit">
       <div name="Menulist" v-bind:class="{'is-hidden' : isCollapsed}" class="menu-content scrollbar-warning">
         <ul id="siteList" class="menu-list">
@@ -14,7 +14,7 @@ Vue.component("side-bar", {
   `,
   props: {},
   data: function(){
-    return {sideFrames: sideFrames, isCollapsed: false}
+    return {sideFrames: sideFrames, isCollapsed: true}
   },
   methods: {
     open: function(){
@@ -24,6 +24,9 @@ Vue.component("side-bar", {
     close: function(){
       // function that closes the sidebar (like on hover-leave, or a close button)
       this.isCollapsed =  true;
+    },
+    update: function(){
+      // function that updates the sidebar with the correct frames
     }
   }
 });
@@ -31,7 +34,7 @@ Vue.component("side-bar", {
 var sideFrames = [];
 
 projects.forEach(function(proj){
-  if(proj.name != "algemeen")
+  if(proj.name != "Algemeen")
   {
     // Might need some changing still for projects, but basically.
     sideFrames.push(proj);

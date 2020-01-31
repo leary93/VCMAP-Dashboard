@@ -3,9 +3,10 @@
 Vue.component("dynamic-page", {
   template:
   `
-  <div class="is-fullwidth add-border fullheight scrollbar-warning" v-bind:class="{'iframe-container': (type == 'pdf' || type == 'site')}" v-show="name == current">
+  <div class="is-fullwidth add-border fullheight scrollbar-warning" v-bind:class="{'iframe-container': (type == 'pdf' || type == 'site' || type == 'tool')}" v-show="name == current">
     <iframe v-bind:src="project.file" v-if="type == 'pdf'" type="application/pdf" allowfullscreen></iframe>
     <iframe class="scrollbar-warning" v-bind:src="project.href" v-if="type == 'site'" allowfullscreen></iframe>
+    <iframe class="scrollbar-warning" v-bind:src="project.src" v-if="type == 'tool'" allowfullscreen></iframe>
     <div v-if="type == 'qandA'">
       HERE IS PLANNED TO BE Q & A
     </div>
@@ -45,6 +46,7 @@ Vue.component("dynamic-page", {
   }
 });
 
+var currentProj = "Algemeen";
 var currentPage = "home";
 var projectFrames = [];
 var dynamicPages = [];
@@ -60,7 +62,7 @@ var pageList = new Vue({
 })
 
 projects.forEach(function(proj){
-  if(proj.name != "algemeen")
+  if(proj.name != "Algemeen")
   {
     // Might need some changing still for projects, but basically.
     projectFrames.push(proj);
@@ -70,6 +72,13 @@ projects.forEach(function(proj){
 function openPage(pageName, project, type){
   // When opening a page (for example, by clicking on one of the frames)
   // We launch this function, which checks if the page needs to be newly Created
+
+  if(project != null){
+    if(project.newTab){
+      window.open(project.src);
+      return
+    }
+  }
 
   if(!LoadedPages.includes(pageName)){
     // If the page doesn't exist yet, we need to create it
@@ -84,6 +93,7 @@ function openPage(pageName, project, type){
   }
 
   currentPage = pageName;
+  currentProj = project;
   pageList.current = currentPage;
   pageList.change();
 }

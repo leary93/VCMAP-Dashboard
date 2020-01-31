@@ -17,7 +17,7 @@ Vue.component('dynamic-frame', {
             <button class="is-fullwidth button has-text-centered has-text-weight-semibold is-radiusless is-paddingless"> {{ frame.name }} </button>
           </p>
           <p class="control" v-if="frame.file != null">
-            <button class="infobutton button is-transparent"><i class="fas fa-info-circle"></i></button>
+            <button class="infobutton button is-transparent" @click="openFile"><i class="fas fa-info-circle"></i></button>
           </p>
           <p class="control">
             <button class="infobutton button is-transparent"><i class="fas fa-edit"></i></button>
@@ -34,6 +34,9 @@ Vue.component('dynamic-frame', {
   methods:{
     openNew: function(){
       window.open(this.frame.href);
+    },
+    openFile: function(){
+      openPage(this.frame.name + "Pdf", this.frame, "pdf");
     }
   }
 })
