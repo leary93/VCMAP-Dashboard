@@ -71,10 +71,11 @@ var projects = [
   "checks": ["Telefoon van vliegtuigstand (begin ochtend)",
              "Doorschakeling uit/telefoon op  kantoor overnemen",
              "Is telefoon/headset opgeladen/aangesloten op stroom",
-             "Telefoon op vliegtuigstand (einde avond)"],
-  "file": "documents/VCMAPalgemeen.pdf",
-  "tools": [],
-  "QRC": []
+             "Telefoon op vliegtuigstand (einde avond)",
+            "Zijn er whatsapp berichten?",
+            "Zijn er voicemail berichten?",
+            "Zijn er nieuwe of ongelezen mails? (vcmap@maptm.nl, BMS@noord-holland.nl, BlauweGolf@noord-holland.nl)"],
+  "file": "documents/VCMAPalgemeen.pdf"
   },
   {"name": "BMS",
   "href": "https://bms.pnh-verkeerscentrale.nl/",
@@ -119,14 +120,18 @@ var sources = [{"name": "Toolbox", "src": "https://toolbox.maptm.nl", "project":
 {"name": "Topdesk PNH", "src": "https://pnh-vm.topdesk.net/tas/public", "project": "BMS", "type": "link", "cat": "tool", "newTab": true},
 {"name": "BMS", "src": "https://bms.pnh-verkeerscentrale.nl/", "project": "BMS", "type": "link", "cat": "site"},
 {"name": "sIM Amsterdam", "src": "https://sim.maptm.nl", "project": "sIM Amsterdam", "type": "link", "cat": "site"},
-{"name": "STS Antwerpen", "src": "https://ontfant.maptm.nl/", "project": "sIM Amsterdam", "type": "link", "cat": "site"},
+{"name": "STS Antwerpen", "src": "https://ontfant.maptm.nl/", "project": "STS Antwerpen", "type": "link", "cat": "site"},
 {"name": "IM Vlaanderen", "src": "https://imviewer.maptm.be", "project": "IM Vlaanderen", "type": "link", "cat": "site"},
 {"name": "OV Zoeker", "src": "https://ovzoeker.nl", "project": "BMS", "type": "link", "cat": "tool"},
 {"name": "Webmail BMS", "src": "https://outlook.office365.com/mail/BMS@noord-holland.nl", "project": "BMS", "type": "link", "cat": "tool"},
 {"name": "Werkinstructie Algemeen", "src": "documents/VCMAPalgemeen.pdf", "project": "Algemeen", "type": "pdf", "cat": "documents"},
 {"name": "Werkinstructie BMS", "src": "documents/BMS.pdf", "project": "BMS", "type": "pdf", "cat": "documents"},
 {"name": "Werkinstructie STS", "src": "documents/STS.pdf", "project": "STS Antwerpen", "type": "pdf", "cat": "documents"},
-{"name": "Werkinstructie IMV Vlaanderen", "src": "documents/IMAntwerpen.pdf", "project": "IM Viewer Vlaanderen", "type": "pdf", "cat": "documents"}]
+{"name": "Werkinstructie IMV Vlaanderen", "src": "documents/IMAntwerpen.pdf", "project": "IM Viewer Vlaanderen", "type": "pdf", "cat": "documents"},
+{"name": "RSBG", "src": "https://rsbg.maptm.nl", "project": "BMS", "type": "link", "cat": "logging"},
+{"name": "QRC STS Antwerpen", "src": "documents/QRCSTS.pdf", "project": "STS Antwerpen", "type": "pdf", "cat": "qrc"},
+{"name": "QRC Projectcodes", "src": "documents/QRCStudentalent.pdf", "project": "Algemeen", "type": "pdf", "cat": "qrc"},
+{"name": "QRC IM Vlaanderen", "src": "documents/QRCIMV.pdf", "project": "IM Vlaanderen", "type": "pdf", "cat": "qrc"}]
 
 var LoadedPages = [];
 

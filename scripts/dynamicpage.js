@@ -3,10 +3,11 @@
 Vue.component("dynamic-page", {
   template:
   `
-  <div class="is-fullwidth add-border fullheight scrollbar-warning" v-bind:class="{'iframe-container': (type == 'pdf' || type == 'site' || type == 'tool')}" v-show="name == current">
+  <div class="is-fullwidth add-border fullheight scrollbar-warning" v-bind:class="{'iframe-container': (type == 'pdf' || type == 'site' || type == 'tool' || type == 'qrc')}" v-show="name == current">
     <iframe v-bind:src="project.file" v-if="type == 'pdf'" type="application/pdf" allowfullscreen></iframe>
     <iframe class="scrollbar-warning" v-bind:src="project.href" v-if="type == 'site'" allowfullscreen></iframe>
     <iframe class="scrollbar-warning" v-bind:src="project.src" v-if="type == 'tool'" allowfullscreen></iframe>
+    <iframe class="scrollbar-warning" v-bind:src="project.src" v-if="type == 'qrc'" type="application/pdf" allowfullscreen></iframe>
     <div v-if="type == 'qandA'">
       HERE IS PLANNED TO BE Q & A
     </div>

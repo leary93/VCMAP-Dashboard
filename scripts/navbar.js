@@ -3,6 +3,7 @@ var documentatie = [];
 var logging = [];
 var qandA = [];
 var tools = [];
+var qrc = [];
 
 var tabs = [
   {name: 'Projecten', active: false, projects: projecten},
@@ -10,7 +11,7 @@ var tabs = [
   {name: 'Tools', active: false, projects: tools},
   {name: 'Logging', active: false, projects: logging},
   {name: 'Q&A', active: false, projects: qandA},
-  {name: 'QRC', active: false},
+  {name: 'QRC', active: false, projects: qrc},
   {name: 'Kalender', active: false}
 ];
 
@@ -27,6 +28,8 @@ projects.forEach(function(proj){
 sources.forEach(function(source){
   if(source.cat == "tool")
     tools.push(source);
+  if(source.cat == "qrc")
+    qrc.push(source);
 })
 
 Vue.component("nav-bar", {
@@ -70,6 +73,9 @@ Vue.component("nav-bar", {
       }
       else if(tab == "Tools"){
         openPage(proj.name + "Tool", proj, "tool");
+      }
+      else if(tab == "QRC"){
+        openPage(proj.name + "QRC", proj, "qrc");
       }
     },
     select: function(tab){
